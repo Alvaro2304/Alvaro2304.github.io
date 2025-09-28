@@ -35,6 +35,7 @@ export default function Tools() {
         { name: "Git", icon: "/git.svg?height=60&width=60" },
         { name: "OpenCV", icon: "/opencv-svgrepo-com.svg?height=60&width=60" },
         { name: "Keras", icon: "/Keras.svg?height=60&width=60" },
+        { name: "Pytorch", icon: "/pytorch.svg?height=60&width=60" },
         { name: "Raspberry Pi", icon: "/raspberry-pi-svgrepo-com.svg?height=60&width=60" },
         { name: "NVIDIA Jetson", icon: "/nvidia-logo-svgrepo-com.svg?height=60&width=60" },
       ],

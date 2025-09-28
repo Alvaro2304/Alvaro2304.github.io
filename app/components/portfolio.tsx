@@ -8,11 +8,29 @@ import { Card, CardContent } from "@/components/ui/card"
 export default function Portfolio() {
   const [selectedCategory, setSelectedCategory] = useState("all")
 
-  const categories = ["all", "design", "computer-vision", "navigation"]
+  const categories = ["all", "design", "computer-vision", "navigation", ]
 
   const projects = [
     {
       id: 1,
+      title: "Crack Segmentation with U-Net (ResNet-101 Encoder)",
+      category: "computer-vision",
+      image: "/crack_seg.jpeg?height=400&width=600",
+      description: "I developed a deep learning model for crack detection and segmentation in road images using a U-Net architecture with a ResNet-101 encoder pretrained on ImageNet. The model was trained on a dataset of 11,000+ images (448×448 resolution) specifically collected for crack detection. The model was tested on a 1920x1080 video, using a sliding window approach. This decreased the inference speed, so this method should be used for offline implementations.",
+      technologies: ["Pytorch", "Python" , "Cuda", "Computer Vision", "Deep Learning"],
+      url: "https://github.com/Alvaro2304/crack_segmentation_unet"
+    },
+    {
+      id: 2,
+      title: "Pointcloud of my neighborhood (Colmap)",
+      category: "computer-vision",
+      image: "/colmap.jpeg?height=400&width=600",
+      description: "A 3D pointcloud of my neighborhood from a video using COLMAP. Generated through a Structure from Motion (SfM) method, it recovered 500,603 sparse points. Additionally, I've runned a PatchMatch step for getting a dense reconstruction. The images were extracted from a 4K qualit video using ffmpeg, recordered from a friend's phone.",
+      technologies: ["Colmap", "Photogrammetry", "Computer Vision"],
+      url: "https://www.youtube.com/watch?v=BQ4dtvkjw0U"
+    },
+    {
+      id: 3,
       title: "Stereo Visual Odometry",
       category: "computer-vision",
       image: "/stereo.png?height=400&width=600",
@@ -21,7 +39,7 @@ export default function Portfolio() {
       url: "https://github.com/Alvaro2304/stereo_vo"
     },
     {
-      id: 2,
+      id: 4,
       title: "Monocular Visual Odometry",
       category: "computer-vision",
       image: "/monocular.png?height=400&width=600",
@@ -30,7 +48,7 @@ export default function Portfolio() {
       url: "https://github.com/Alvaro2304/monocular"
     },
     {
-      id: 3,
+      id: 5,
       title: "Navigation Sandbox TurtleBot 4",
       category: "navigation",
       image: "/turtle4.png?height=400&width=600",
@@ -39,7 +57,7 @@ export default function Portfolio() {
       url: "https://github.com/Alvaro2304/turtlebot4_path_planning"
     },
     {
-      id: 4,
+      id: 6,
       title: "Capstone Project UTEC × Purdue",
       category: "design",
       image: "/capstone.jpeg?height=400&width=600",
@@ -48,7 +66,7 @@ export default function Portfolio() {
       url: "https://polytechnic.purdue.edu/capstone-project/utec-x-purdue-beach-cleaning-robot"
     },
     {
-      id: 5,
+      id: 7,
       title: "Beach Waste Collector Prototype",
       category: "design",
       image: "/thesis_1.png?height=400&width=600",
@@ -90,7 +108,7 @@ export default function Portfolio() {
           ))}
         </div>
 
-        <motion.div layout className="grid gap-8 sm:grid-cols-2 auto-rows-fr">
+        <motion.div layout className="grid gap-8 grid-cols-1 sm:grid-cols-2 auto-rows-fr">
           <AnimatePresence>
             {filteredProjects.map((project) => (
               <motion.div
