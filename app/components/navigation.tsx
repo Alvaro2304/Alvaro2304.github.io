@@ -3,19 +3,11 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Menu, X } from "lucide-react"
+import { navItems } from "@/data/site-data"
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
-
-  const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "Experience", href: "#experience" },
-    { name: "Projects", href: "#projects" },
-    { name: "Tools", href: "#tools" },
-    { name: "About", href: "#about" },
-    { name: "Contact", href: "#contact" },
-  ]
 
   useEffect(() => {
     const handleScroll = () => {

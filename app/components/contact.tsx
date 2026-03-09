@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Mail } from "lucide-react"
+import { socialLinks } from "@/data/site-data"
 
 export default function Contact() {
   return (
@@ -22,7 +23,7 @@ export default function Contact() {
             <div className="mb-8 flex justify-center">
               <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-gray-600">
                 <img
-                  src="/ap_brazil.jpeg?height=200&width=200"
+                  src="/ap_brazil.jpeg"
                   alt="Alvaro Palero"
                   className="w-full h-full object-cover"
                 />
@@ -65,10 +66,10 @@ export default function Contact() {
             <div className="flex items-center justify-center gap-4 text-xl text-gray-300">
               <Mail className="w-6 h-6" />
               <a
-                href="mailto:apalero.ramirez@gmail.com"
+                href={`mailto:${socialLinks.email}`}
                 className="hover:text-white transition-colors underline decoration-gray-600 hover:decoration-white"
               >
-                apalero.ramirez@gmail.com
+                {socialLinks.email}
               </a>
             </div>
           </motion.div>

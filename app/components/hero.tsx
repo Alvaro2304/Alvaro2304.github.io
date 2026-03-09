@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 import { Github, Linkedin, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { socialLinks } from "@/data/site-data"
 
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -15,10 +16,11 @@ export default function Hero() {
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
+    let width = window.innerWidth
+    let height = window.innerHeight
+    canvas.width = width
+    canvas.height = height
 
-    const particles: Particle[] = []
     const particleCount = 100
 
     class Particle {
@@ -29,8 +31,8 @@ export default function Hero() {
       speedY: number
 
       constructor() {
-        this.x = Math.random() * canvas.width
-        this.y = Math.random() * canvas.height
+        this.x = Math.random() * width
+        this.y = Math.random() * height
         this.size = Math.random() * 2 + 0.1
         this.speedX = Math.random() * 2 - 1
         this.speedY = Math.random() * 2 - 1
@@ -40,10 +42,10 @@ export default function Hero() {
         this.x += this.speedX
         this.y += this.speedY
 
-        if (this.x > canvas.width) this.x = 0
-        if (this.x < 0) this.x = canvas.width
-        if (this.y > canvas.height) this.y = 0
-        if (this.y < 0) this.y = canvas.height
+        if (this.x > width) this.x = 0
+        if (this.x < 0) this.x = width
+        if (this.y > height) this.y = 0
+        if (this.y < 0) this.y = height
       }
 
       draw() {
@@ -55,32 +57,48 @@ export default function Hero() {
       }
     }
 
+    const particles: Particle[] = []
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle())
     }
 
+    let animationId: number
+
     function animate() {
       if (!ctx) return
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      ctx.clearRect(0, 0, width, height)
 
       for (const particle of particles) {
         particle.update()
         particle.draw()
       }
 
-      requestAnimationFrame(animate)
+      animationId = requestAnimationFrame(animate)
     }
 
     animate()
 
     const handleResize = () => {
       if (!canvasRef.current) return
-      canvasRef.current.width = window.innerWidth
-      canvasRef.current.height = window.innerHeight
+      const oldWidth = width
+      const oldHeight = height
+      width = window.innerWidth
+      height = window.innerHeight
+      canvasRef.current.width = width
+      canvasRef.current.height = height
+
+      // Reposition particles proportionally
+      for (const particle of particles) {
+        particle.x = (particle.x / oldWidth) * width
+        particle.y = (particle.y / oldHeight) * height
+      }
     }
 
     window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
+    return () => {
+      window.removeEventListener("resize", handleResize)
+      cancelAnimationFrame(animationId)
+    }
   }, [])
 
   return (
@@ -112,15 +130,15 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <p className="text-lg text-gray-300 leading-relaxed mb-8">
-                Mechatronics Engineering graduate with practical experience in mobile robotics. I specialize in
-                localization, path planning, and perception, and I'm passionate about contributing to teams developing
-                autonomous navigation, SLAM, and sensor fusion systems.
+                AI-focused Mechatronics Engineer skilled in Python, C++, and ROS. Experienced
+                in building perception systems through computer vision, deep learning, and sensor
+                fusion.
               </p>
 
               {/* Social Links */}
               <div className="flex items-center gap-4 mb-8">
                 <a
-                  href="https://www.linkedin.com/in/alvaropaleroramirez/"
+                  href={socialLinks.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 border border-gray-600 rounded-lg hover:border-white transition-colors"
@@ -128,7 +146,7 @@ export default function Hero() {
                   <Linkedin className="w-6 h-6" />
                 </a>
                 <a
-                  href="https://github.com/Alvaro2304"
+                  href={socialLinks.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 border border-gray-600 rounded-lg hover:border-white transition-colors"
