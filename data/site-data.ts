@@ -156,6 +156,9 @@ export const toolCategories: ToolCategory[] = [
       { name: "Pytorch", icon: "/pytorch.svg" },
       { name: "Raspberry Pi", icon: "/raspberry-pi-svgrepo-com.svg" },
       { name: "NVIDIA Jetson", icon: "/nvidia-logo-svgrepo-com.svg" },
+      { name: "Docker", icon: "/Docker.svg" },
+      { name: "PostgreSQL", icon: "/postgres.svg" },
+      { name: "SQLite", icon: "/sqlite-icon.svg" },
     ],
   },
 ]
@@ -166,8 +169,10 @@ export const experiences: ExperienceEntry[] = [
     company: "Robotic Air Systems",
     dateRange: "January 12, 2026 - Present",
     responsibilities: [
-      "Architected a multi-threaded Python pipeline to handle real-time image acquisition and inference, ensuring non-blocking JSON data transmission to remote servers.",
-      "Developed a production-ready Docker environment for NVIDIA Jetson, utilizing Docker Compose to automate the vision service on system boot.",
+      "Designed an end-to-end vision system for UAV-based detection and segmentation, benchmarking YOLO and RT-DETR models.",
+      "Built a multi-threaded Python pipeline for real-time image acquisition, inference, and async data transmission.",
+      "Deployed the vision service on NVIDIA Jetson Orin Nano via Docker Compose with TensorRT-optimized edge inference.",
+      "Managed dataset labeling QA through Label Studio, coordinating the labeling team and auditing quality across iterations.",
     ],
   },
   {

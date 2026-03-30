@@ -157,7 +157,7 @@ export default function Hero() {
 
               {/* View CV Button */}
               <a
-                href="/uploads/Resume-Alvaro-Palero.pdf"
+                href="/uploads/cv.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >

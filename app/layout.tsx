@@ -19,6 +19,7 @@ export default function RootLayout({
         <meta property="og:image" content="/ap_brazil.jpeg" />
         <meta property="og:url" content="https://alvaro2304.github.io" />
         <meta name="twitter:card" content="summary_large_image" />
+        <link rel="icon" href="/gunter.svg" type="image/svg+xml" />
       </head>
       <body className={inter.className}>{children}</body>
     </html>
